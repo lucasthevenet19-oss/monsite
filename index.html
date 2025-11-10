@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Thevenet — CV</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1E3A8A;
+            --title-color: #1F2937;
+            --text-color: #000000;
+            --skill-bg-color: #E5E7EB;
+            --card-bg-color: #FFFFFF;
+            --page-bg-color: #F9FAFB;
+        }
+
+        body {
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--text-color);
+            font-size: 16px;
+            background-color: var(--page-bg-color);
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box; 
+            overflow-x: hidden; 
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 2rem 30px 0; 
+            border-bottom: 4px solid #16275E;
+            position: relative; 
+        }
+
+        .header-content-top {
+            display: flex;
+            align-items: center; 
+            width: 100%;
+            justify-content: center; 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .header-text-content {
+            flex-shrink: 0; 
+            text-align: left; 
+            margin-left: 30px; 
+        }
+
+        h1 {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 36px;
+            margin: 0; 
+        }
+
+        header p {
+            font-size: 18px;
+            font-style: italic;
+            margin: 0;
+        }
+
+        nav {
+            width: 100%;
+            padding: 1rem 0; 
+            display: flex;
+            justify-content: center; 
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2); 
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            white-space: nowrap; 
+        }
+
+        nav a:hover {
+            color: #93C5FD;
+        }
+
+        h2 {
+            color: var(--title-color);
+            font-weight: bold;
+            font-size: 24px; 
+            margin-bottom: 1.5rem; 
+        }
+
+        h3 {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Styles pour les expériences / réalisations / compétences */
+        .experience-bloc {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-header {
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-lieu {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--title-color);
+            flex-shrink: 1; 
+            min-width: 0;
+        }
+
+        .experience-date {
+            font-style: italic;
+            color: #4B5563; 
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .loisir-golf {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 0.5rem;
+        }
+        .parcours-annee {
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+        .parcours-ecole {
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-card {
+            background-color: var(--card-bg-color);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease;
+            min-width: auto; 
+            opacity: 0;
+        }
+
+        .section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .animate-in {
+            opacity: 1 !important;
+        }
+
+
+        #photo-profil {
+            position: static; 
+            width: 130px;     
+            height: 130px;
+            border-radius: 50%; 
+            border: 5px solid white; 
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .decalage-main {
+            margin-top: 30px; 
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px; 
+            max-width: 96rem;
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .header-content-top {
+                flex-direction: column;
+            }
+            .header-text-content {
+                text-align: center;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            nav {
+                gap: 1rem;
+            }
+            .decalage-main {
+                margin-top: 1rem;
+            }
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .experience-date {
+                margin-left: 0;
+                margin-top: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="header-content-top">
+            <img id="photo-profil" src="new_profil.png" alt="Photo de profil de la personne">
+
+            <div class="header-text-content">
+                <h1>Lucas Thevenet</h1>
+                <p>Bachelor Informatique, 1ère année</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#contact">CONTACT</a>
+            <a href="#competences">COMPÉTENCES</a>
+            <a href="#centre-interet">CENTRE D'INTERET</a>
+            <a href="#parcours">PARCOURS SCOLAIRE</a>
+            <a href="#realisations">RÉALISATIONS</a> 
+            <a href="#experiences">EXPÉRIENCES PROFESSIONNELLES</a>
+        </nav>
+    </header>
+    
+    <main class="max-w-6xl mx-auto my-12 space-y-12 px-6 md:px-0 decalage-main">
+        
+        <div class="md:flex md:space-x-8">
+            
+            <div class="flex-1 space-y-8" id="left">
+                
+                <div class="section-card" id="contact">
+                    <h2>CONTACT</h2>
+                    <ul class="space-y-2">
+                        <li><strong>Email :</strong> lucas.thevenet19@gmail.com</li>
+                        <li><strong>Téléphone :</strong> 07 79 55 34 43</li>
+                        <li><strong>Adresse :</strong> 61 Quai Boissy D'Anglas</li>
+                    </ul>
+                </div>
+
+                <div class="section-card" id="centre-interet">
+                    <h2>CENTRE D'INTERET</h2>
+                    <div> 
+                        <p class="loisir-golf">**Golf**</p>
+                        <ul class="list-disc pl-6 space-y-1 text-sm">
+                            <li>Licencié au Golf de Rueil-Malmaison (Index 19.1)</li>
+                            <li>Commissaire bénévole à l’Open de France 2023 et 2024 : gestion des flux de spectateurs et participation à la sécurité et au bon déroulement de la compétition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex-1 space-y-8" id="right">
+                
+                <div class="section-card" id="parcours">
+                    <h2>PARCOURS SCOLAIRE</h2>
+                    <div class="experience-bloc">
+                        <div class="parcours-annee">2025/2026</div>
+                        <div class="parcours-ecole">Bachelor Informatique — Sup de Vinci, La Défense</div>
+                    </div>
+
+                    <div class="experience-bloc">
+                        <div class="parcours-annee">2023/2025</div>
+                        <div class="parcours-ecole">Bac professionnel option Système numérique — Lycée Passy Buzenval, Rueil-Malmaison</div>
+                    </div>
+
+                    <div class="experience-bloc">
+                        <div class="parcours-annee">2022/2023</div>
+                        <div class="parcours-ecole">2nde générale option Sciences de l'ingénieur — Lycée Corneille, La Celle Saint-Cloud (78)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            
+            <div class="section-card" id="competences">
+                <h2>COMPÉTENCES</h2>
+                
+                <div class="experience-bloc">
+                    <h3 class="experience-lieu mb-2">Compétences acquises (Bac Pro)</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-sm">
+                        <li>Réseaux : Configuration d'équipements actifs (routeurs, switchs) et câblage VDI</li>
+                        <li>Maintenance : Diagnostic de pannes et intervention sur les systèmes informatiques (matériels et logiciels)</li>
+                        <li>Sécurité/Sûreté : Initiation aux systèmes de vidéosurveillance, contrôle d'accès et alarme</li>
+                        <li>Programmation et développement de sites web</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-bloc">
+                    <h3 class="experience-lieu mb-2">Compétences en cours d’acquisition (Bachelor Sup de Vinci)</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-sm">
+                        <li>Programmation web et algorithmique : maîtrise des bases en HTML, CSS, JavaScript, Python, PHP</li>
+                        <li>Gestion de version et collaboration : utilisation de Git / GitHub</li>
+                        <li>Systèmes et réseaux : découverte de Windows, Linux, MacOS, Windows Server, notions de virtualisation et d’adressage réseau</li>
+                        <li>Bases de données : conception et manipulation de bases SQL / NoSQL</li>
+                        <li>Découverte de l’intelligence artificielle et du prompt engineering</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section-card" id="realisations">
+                <h2>RÉALISATIONS</h2>
+                
+                <div class="experience-bloc">
+                    <div class="experience-header">
+                        <span class="experience-lieu">Chef-d’œuvre Bac Pro – Capteur d’humidité et de température</span>
+                        <span class="experience-date">2023-2025</span>
+                    </div>
+                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                        <li>Conception et réalisation d’un capteur capable de mesurer et alerter sur les conditions environnementales pour asthmatiques.</li>
+                        <li>Projet : définition, commande du matériel, montage, programmation, tests et présentation finale.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-bloc">
+                    <div class="experience-header">
+                        <span class="experience-lieu">Site web CV</span>
+                        <span class="experience-date">2025</span>
+                    </div>
+                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                        <li>Conception et développement d’un site web personnel pour présenter mon CV, projets et compétences techniques.</li>
+                        <li>Technologies utilisées : HTML, CSS, JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-card" id="experiences">
+                <h2>EXPÉRIENCES PROFESSIONNELLES</h2>
+                
+                <div class="experience-bloc">
+                    <div class="experience-header">
+                        <span class="experience-lieu">KPMG — Équipe ITS</span>
+                        <span class="experience-date">12/11 au 20/12/2024</span>
+                    </div>
+                    <p class="text-sm italic mb-1">La Défense</p>
+                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                        <li>Masterisation des PC</li>
+                        <li>Déploiement des téléphones portables</li>
+                        <li>Découverte réseaux et cybersécurité (Cyberark, Sailpoint, Vulnérabilités)</li>
+                        <li>Dépannage PC, téléphones, installations vidéo-projection</li>
+                        <li>Information et observation de Microsoft Azure</li>
+                    </ul>
+                </div>
+
+                <div class="experience-bloc">
+                    <div class="experience-header">
+                        <span class="experience-lieu">INQUEST — Équipe Cybersécurité</span>
+                        <span class="experience-date">3/06 au 5/07/2024</span>
+                    </div>
+                    <p class="text-sm italic mb-1">Puteaux</p>
+                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                        <li>Études de cas des différents types d’attaques cyber</li>
+                        <li>Comparatif des gestionnaires de mot de passe existants sur le marché</li>
+                        <li>Information sur le logiciel “Vélociraptor”</li>
+                        <li>Rédaction d'une fiche de description des rôles dans une crise cyber</li>
+                        <li>Benchmark des solutions de coffre-fort numérique dans le contexte d'INQUEST</li>
+                    </ul>
+                </div>
+
+                <div class="experience-bloc">
+                    <div class="experience-header">
+                        <span class="experience-lieu">Banque de France — Direction Sécurité</span>
+                        <span class="experience-date">15/01 au 15/02/2024</span>
+                    </div>
+                    <p class="text-sm italic mb-1">Paris</p>
+                    <ul class="list-disc pl-6 space-y-1 text-sm">
+                        <li>Découverte du système de sécurité incendie (détection, évacuation, compartimentage et désenfumage)</li>
+                        <li>Découverte du poste centrale de surveillance (PCS)</li>
+                        <li>Contrôle des clés de sécurité de la PCS et de la PERISEC du siège et des immeubles périphériques</li>
+                        <li>Découverte et utilisation de la reconnaissance biométrique (Iris scan)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Animation simple à l'apparition des sections
+        const sections = document.querySelectorAll('.section-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
